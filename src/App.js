@@ -1,14 +1,15 @@
 import React from "react";
 import './App.css';
-import UserList from "./components/admin/createUserAdmin/createUserAdmin";
 import CreateUser from "./components/universal/createAccount/createUser";
 import Login from "./components/universal/login/login";
 import AdminLayout from "./components/admin/adminLayout";
 import StudentLayout from "./components/student/studentLayout";
 import TeacherLayout from "./components/teacher/teacherLayout";
-import AdminUserPage from "./components/admin/adminUserPage";
+import AdminUserPage from "./components/admin/users/adminUserPage";
+import AdminClassPage from "./components/admin/classes/adminClassPage";
 
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import AdminAssignmentPage from "./components/admin/lessons/adminAssignmentPage";
 
 function App() {
   return (
@@ -30,15 +31,20 @@ function App() {
         </nav>
 
         <Routes>
-          <Route path="/createAccount" element={<CreateUser />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/users" element={<UserList />} />
-          <Route path="/admin" element={<AdminLayout />} >
-            <Route path = "users" element = {<AdminUserPage/>}/>
-          </Route>
-          <Route path="/student" element={<StudentLayout />} />
-          <Route path="/teacher" element={<TeacherLayout />} />
-        </Routes>
+                <Route path="/createAccount" element={<CreateUser />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/admin" element={<AdminLayout />}>
+                    <Route path="users" element={<AdminUserPage />} />
+                    <Route path="classes" element={<AdminClassPage />}/>
+                    <Route path="lessons" element={<AdminAssignmentPage />} />
+                </Route>
+                <Route path="/student" element={<StudentLayout />}>
+                 
+                </Route>
+                <Route path="/teacher" element={<TeacherLayout />}>
+             
+                </Route>
+            </Routes>
       </div>
     </Router>
   );
